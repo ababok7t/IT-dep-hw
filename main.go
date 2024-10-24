@@ -54,8 +54,12 @@ func main() {
 		outputArr[i] = fmt.Sprintf(strings.ToUpper(individualStrings[i])+" - "+"%d "+"байт", len(individualStrings[i]))
 	}
 	sort.Strings(outputArr)
-
-	for i := range outputArr {
-		outputFile.WriteString(outputArr[i] + "\n")
+	if (len(outputArr) == 1) && (outputArr[0] == " - 0 байт") {
+		outputFile.WriteString("файл пуст")
+		fmt.Println("файл пуст")
+	} else {
+		for i := range outputArr {
+			outputFile.WriteString(outputArr[i] + "\n")
+		}
 	}
 }
