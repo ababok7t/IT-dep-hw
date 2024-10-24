@@ -8,8 +8,11 @@ import (
 	"strings"
 )
 
+var filePATH string
+
 func main() {
-	inputFile, inputErr := os.Open("input.txt")
+	fmt.Fscan(os.Stdin, &filePATH)
+	inputFile, inputErr := os.Open(string(filePATH))
 	outputFile, outputErr := os.Create("output.txt")
 
 	if inputErr != nil {
